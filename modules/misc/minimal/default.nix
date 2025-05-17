@@ -1,0 +1,23 @@
+{
+  lib,
+  ...
+}:
+
+let
+  off = lib.mkDefault { enable = false; };
+in
+
+{
+  programs = {
+    nano = off;
+    command-not-found = off;
+  };
+
+  documentation = {
+    dev = off;
+    doc = off;
+    info = off;
+    man = off;
+    nixos = off;
+  };
+}
