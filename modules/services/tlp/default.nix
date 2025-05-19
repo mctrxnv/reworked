@@ -1,4 +1,11 @@
 {
+  lib,
+  ...
+}:
+
+with lib;
+
+{
   services.tlp = {
     enable = true;
 

@@ -20,4 +20,16 @@ in
     man = off;
     nixos = off;
   };
+
+  hm = {
+    news.display = "silent";
+
+    programs.man = off;
+
+    manual = {
+      html = off;
+      json = off;
+      manpages = off;
+    };
+  };
 }

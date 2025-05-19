@@ -11,7 +11,7 @@ with lib;
     sudo.enable = false;
 
     sudo-rs = {
-      enable = false;
+      enable = true;
 
       execWheelOnly = true;
       wheelNeedsPassword = true;

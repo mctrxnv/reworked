@@ -7,13 +7,41 @@
 }:
 
 with lib;
+let
+  color =
+    if itIs == "desktop" then
+      "breeze"
+    else if itIs == "laptop" then
+      "paleorange"
+    else
+      "adwaita";
+in
 
 {
+  hm.stylix = {
+    enable = true;
+    autoEnable = false;
+
+    iconTheme = {
+      enable = true;
+
+      dark = "Papirus-Dark";
+      light = "Papirus-Light";
+
+      package = pkgs.papirus-icon-theme.override {
+        inherit
+          color
+          ;
+      };
+    };
+
+    targets = import ./targets.nix;
+  };
+
   stylix = {
     enable = true;
-    overlays.enable = true;
-
     autoEnable = false;
+    overlays.enable = true;
 
     image = import ./image.nix {
       inherit
@@ -89,9 +117,11 @@ with lib;
   environment.systemPackages =
     with pkgs;
     [
+      arkpandora_ttf
       corefonts
       liberation_ttf
-      arkpandora_ttf
+      noto-fonts
+      noto-fonts-cjk-sans
     ]
     ++ (with nerd-fonts; [ tinos ]);
 }

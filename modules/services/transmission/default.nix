@@ -1,26 +1,12 @@
 {
   pkgs,
   lib,
-  config,
   ...
 }:
 
 with lib;
 
 {
-  environment = {
-    systemPackages = with pkgs; [ xpk.torque ];
-
-    shellAliases =
-      let
-        mk = n: cmd: getExe' config.services.transmission.package n + cmd;
-      in
-      {
-        tmAdd = mk "transmission-show" " -m";
-        ttAdd = mk "transmission-remote" " -a";
-      };
-  };
-
   systemd.services.transmission.serviceConfig.UMask = lib.mkForce "0037";
 
   services.transmission = rec {

@@ -7,63 +7,61 @@
 with lib;
 
 {
-  config = {
-    programs.fish.enable = true;
+  programs.fish.enable = true;
 
-    services.getty = {
-      autologinUser = system.userName;
-      greetingLine = "uwu nya " + system.userName;
-      autologinOnce = true;
+  services.getty = {
+    autologinUser = system.userName;
+    greetingLine = "uwu nya " + system.userName;
+    autologinOnce = true;
+  };
+
+  users = {
+    defaultUserShell = pkgs.fish;
+
+    groups = {
+      ${system.userName} = { };
+      media = { };
     };
 
-    users = {
-      defaultUserShell = pkgs.fish;
+    users =
+      let
+        passwd = "$2b$05$vfFJcNMZaHujKhPSERV/o.nLa2GqYlM0e8ovlfwnhj4XdOJ3Gv7h2";
+      in
+      {
+        ${system.userName} = {
+          isNormalUser = true;
 
-      groups = {
-        ${system.userName} = { };
-        media = { };
-      };
+          home = "/home/" + system.userName;
+          createHome = true;
 
-      users =
-        let
-          passwd = "$2b$05$vfFJcNMZaHujKhPSERV/o.nLa2GqYlM0e8ovlfwnhj4XdOJ3Gv7h2";
-        in
-        {
-          ${system.userName} = {
-            isNormalUser = true;
-
-            home = "/home/" + system.userName;
-            createHome = true;
-
-            extraGroups = [
-              "media"
-              "video"
-              "audio"
-              #
-              "networkmanager"
-              "wheel"
-              "docker"
-              "podman"
-              "libvirtd"
-              "terraria"
-              "adbusers"
-              # torrent
-              "transmission"
-              "qbittorrent"
-              "deluge"
-              "flood"
-            ];
-            initialHashedPassword = passwd;
-          };
-
-          root.initialHashedPassword = passwd;
-
-          media = {
-            isSystemUser = true;
-
-            group = "media";
-          };
+          extraGroups = [
+            "media"
+            "video"
+            "audio"
+            #
+            "networkmanager"
+            "wheel"
+            "docker"
+            "podman"
+            "libvirtd"
+            "terraria"
+            "adbusers"
+            # torrent
+            "transmission"
+            "qbittorrent"
+            "deluge"
+            "flood"
+          ];
+          initialHashedPassword = passwd;
         };
-    };
+
+        root.initialHashedPassword = passwd;
+
+        media = {
+          isSystemUser = true;
+
+          group = "media";
+        };
+      };
   };
 }

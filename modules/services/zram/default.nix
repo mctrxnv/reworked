@@ -1,4 +1,11 @@
 {
+  lib,
+  ...
+}:
+
+with lib;
+
+{
   zramSwap = {
     enable = true;
 

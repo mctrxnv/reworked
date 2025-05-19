@@ -16,11 +16,14 @@ let
       home.nixosModules.home-manager
       impermanence.nixosModules.impermanence
       nixpkgs.nixosModules.notDetected
+      nur.modules.nixos.default
       stylix.nixosModules.stylix
     ];
 
     home = [
       nixcord.homeModules.nixcord
+      nur.modules.homeManager.default
+      spicetify.homeManagerModules.default
     ];
   };
 
@@ -59,6 +62,7 @@ let
       lib = inputs.nixpkgs.lib.extend (
         final: prev:
         {
+          inherit (inputs.home.lib) hm;
           inherit (system) itIs;
           inherit
             machineName
@@ -96,17 +100,16 @@ let
 
       modules = mkSystem ++ [
         {
-          imports = (
-            lib.singleton
-            <|
-              lib.mkAliasOptionModule
-                [ "hm" ]
-                [
-                  "home-manager"
-                  "users"
-                  system.userName
-                ]
-          );
+          imports = [
+            (lib.mkAliasOptionModule
+              [ "hm" ]
+              [
+                "home-manager"
+                "users"
+                system.userName
+              ]
+            )
+          ];
 
           home-manager = {
             sharedModules = lists.home;

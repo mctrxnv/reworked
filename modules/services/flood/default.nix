@@ -8,6 +8,7 @@ with lib;
 
 {
   persist.dirs = [ "/var/lib/flood" ];
+
   systemd.services.flood = {
     after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];

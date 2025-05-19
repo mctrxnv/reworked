@@ -7,17 +7,16 @@
 
 with lib;
 let
-  mk = n: "sudo ${getExe' pkgs.amneziawg-amneziawg-tools "awg-quick"} ${n} config";
   systemd = false;
+
+  mk = n: "sudo ${getExe' pkgs.amneziawg-amneziawg-tools "awg-quick"} ${n} config";
 in
 
 {
-  environment = {
-    systemPackages = with pkgs; [
-      amneziawg-tools
-      amneziawg-go
-    ];
-  };
+  environment.systemPackages = with pkgs; [
+    amneziawg-tools
+    amneziawg-go
+  ];
 
   boot.extraModulePackages = with config.boot.kernelPackages; [ amneziawg ];
 

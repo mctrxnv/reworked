@@ -27,7 +27,7 @@ with lib;
         StateDirectoryMode = mkDefault 775;
 
         ExecStart = ''
-          ${getExe' pkgs.xpk.torrserver "torrserver"} \
+          ${getExe' pkgs.torrserver "torrserver"} \
           -d /var/lib/torrserver \
           -p 8090
         '';

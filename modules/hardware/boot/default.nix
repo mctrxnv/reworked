@@ -4,6 +4,8 @@
   ...
 }:
 
+with lib;
+
 {
   persist.dirs = [ "/var/lib/plymouth" ];
 
@@ -11,7 +13,7 @@
     kernelPackages = pkgs.linuxPackages_zen;
 
     loader = {
-      timeout = lib.mkForce 0;
+      timeout = mkForce 0;
 
       systemd-boot = {
         enable = true;

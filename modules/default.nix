@@ -4,5 +4,9 @@
 }:
 
 {
-  imports = lib.mkUmport ./. [ ./default.nix ];
+  imports = lib.mkUmport ./. [
+    ./default.nix
+    ./windowManagers/niri_test
+    ./windowManagers/sway
+  ];
 }

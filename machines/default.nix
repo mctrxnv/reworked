@@ -1,5 +1,5 @@
 {
-  pcRyazenkaXXX = {
+  pcRyazenka = {
     system = {
       itIs = "desktop";
       hostName = "jetpure";
