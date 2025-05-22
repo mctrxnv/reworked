@@ -57,30 +57,34 @@ in
     cursor = {
       size = 24;
       name = "GoogleDot-Custom";
-      package =
-        let
-          mk = a: b: c: {
-            background_color = a;
-            outline_color = b;
-            accent_color = c;
-          };
-        in
-        inputs.cursors.packages.${pkgs.system}.google-cursor.override (
-          with config.lib.stylix.colors.withHashtag;
-          if (itIs == "laptop") then
-            mk base08 base00 base08
-          else if (itIs == "desktop") then
-            mk base0E base00 base0E
-          else
-            mk base00 base05 base05
-        );
+      package = inputs.cursors.packages.${pkgs.system}.google-cursor.override (
+        with config.lib.stylix.colors.withHashtag;
+        if (itIs == "laptop") then
+          {
+            background_color = base08;
+            outline_color = base00;
+            accent_color = base08;
+          }
+        else if (itIs == "desktop") then
+          {
+            background_color = base0E;
+            outline_color = base00;
+            accent_color = base0E;
+          }
+        else
+          {
+            background_color = base00;
+            outline_color = base05;
+            accent_color = base05;
+          }
+      );
     };
 
     fonts =
       rec {
         emoji = {
-          package = pkgs.noto-fonts-color-emoji;
-          name = "Noto Color Emoji";
+          package = pkgs.noto-fonts-emoji;
+          name = "Noto Emoji";
         };
 
         monospace = {
@@ -114,14 +118,11 @@ in
     };
   };
 
-  environment.systemPackages =
-    with pkgs;
-    [
-      arkpandora_ttf
-      corefonts
-      liberation_ttf
-      noto-fonts
-      noto-fonts-cjk-sans
-    ]
-    ++ (with nerd-fonts; [ tinos ]);
+  environment.systemPackages = with pkgs; [
+    arkpandora_ttf
+    corefonts
+    liberation_ttf
+    noto-fonts
+    noto-fonts-cjk-sans
+  ];
 }

@@ -1,14 +1,13 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }:
 
 with lib;
 
 {
-  programs.fish.enable = true;
-
   services.getty = {
     autologinUser = system.userName;
     greetingLine = "uwu nya " + system.userName;
@@ -16,7 +15,7 @@ with lib;
   };
 
   users = {
-    defaultUserShell = pkgs.fish;
+    defaultUserShell = if config.programs.fish.enable then pkgs.fish else pkgs.zsh;
 
     groups = {
       ${system.userName} = { };

@@ -1,12 +1,11 @@
 {
   lib,
-  config,
   ...
 }:
 
 with lib;
 
-{
+mkIf (itIs == "desktop" || itIs == "laptop") {
   hm.programs.zathura = {
     enable = true;
 

@@ -10,7 +10,7 @@ mkIf (itIs == "desktop") {
   hm = {
     home.packages = [ pkgs.legendary-gl ];
 
-    xdg.configFile."legendary/config.ini".text = generators.toINI { } {
+    xdg.configFile."legendary/config.ini".text = lib.generators.toINI { } {
       "Legendary" = {
         disable_auto_aliasing = false;
         disable_https = false;

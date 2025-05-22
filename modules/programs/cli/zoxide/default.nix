@@ -11,9 +11,6 @@ mkIf (itIs == "desktop" || itIs == "laptop") {
   hm.programs.zoxide = {
     enable = true;
 
-    enableFishIntegration = true;
-    enableZshIntegration = true;
-
     options = [ "--cmd cd" ];
   };
 }

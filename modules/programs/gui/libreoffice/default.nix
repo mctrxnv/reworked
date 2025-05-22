@@ -7,7 +7,7 @@
 
 with lib;
 
-mkIf true {
+mkIf (itIs == "desktop" || itIs == "laptop") {
   hm = {
     home.packages = with pkgs; [ libreoffice-fresh ];
 

@@ -6,7 +6,7 @@
 
 with lib;
 
-{
+mkIf config.programs.fish.enable {
   hm.programs.starship = {
     enable = true;
     enableTransience = true;

@@ -7,8 +7,6 @@ with lib;
 
 mkIf (itIs == "desktop" || itIs == "laptop") {
   hm.dconf = {
-    enable = true;
-
     settings =
       let
         gn = "org/gnome";

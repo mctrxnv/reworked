@@ -23,7 +23,7 @@ with config.lib.stylix.colors;
       "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1"
       "mako"
       (getExe mic)
-      (optionals config.hm.programs.waybar.enable "waybar")
+      "waybar"
     ];
 
   monitor =
@@ -86,12 +86,16 @@ with config.lib.stylix.colors;
   };
 
   # animations
-  animations = on // {
+  animations = {
+    enabled = true;
+
     first_launch_animation = false;
+
     bezier = [
       "over,     0,    0.1, 0.1, 0.3"
       "myBezier, 0.05, 0.9, 0.1, 1.0"
     ];
+
     animation = [
       "windowsIn,   1, 3, myBezier, popin 80%"
       "windowsOut,  1, 3, myBezier, popin 80%"
@@ -109,14 +113,17 @@ with config.lib.stylix.colors;
 
   # clitor | touchpad | rat
   cursor.inactive_timeout = 1;
+
   input = {
     kb_layout = "us,ru";
     kb_options = "grp:caps_toggle";
+
     touchpad = {
       natural_scroll = false;
       disable_while_typing = false;
     };
   };
+
   device = [
     {
       name = "synps/2-synaptics-touchpad";
@@ -128,11 +135,13 @@ with config.lib.stylix.colors;
       scroll_points = "0.2 0.0 0.5 1 1.2 1.5";
     }
   ];
+
   gestures = {
     workspace_swipe = true;
     workspace_swipe_fingers = 3;
     workspace_swipe_create_new = true;
   };
+
   binds = {
     workspace_back_and_forth = false;
     allow_pin_fullscreen = true;
@@ -151,12 +160,16 @@ with config.lib.stylix.colors;
     disable_hyprland_logo = true;
     disable_splash_rendering = true;
     mouse_move_enables_dpms = true;
+
     vfr = true;
     vrr = 1;
+
     animate_manual_resizes = true;
     animate_mouse_windowdragging = true;
+
     enable_swallow = true;
     close_special_on_empty = true;
+
     background_color = mkForce "rgb(${base00})";
   };
 }

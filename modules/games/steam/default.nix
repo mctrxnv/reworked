@@ -65,16 +65,4 @@ mkIf (itIs == "desktop" || itIs == "laptop") {
       enableRenice = true;
     };
   };
-
-  systemd.user.services.steam-autostart = {
-    wantedBy = [ "graphical-session.target" ];
-
-    serviceConfig = {
-      ExecStart = ''${getExe config.programs.steam.package} ${extraArgs} %U'';
-      Restart = "on-abort";
-      RestartSec = "5s";
-    };
-
-    environment = { } // steamUnified;
-  };
 }

@@ -13,10 +13,31 @@ let
 in
 
 mkIf (itIs == "desktop" || itIs == "laptop") {
-  environment.systemPackages = with pkgs; [
-    amneziawg-tools
-    amneziawg-go
-  ];
+  environment = {
+    etc = builtins.listToAttrs (
+      map
+        (
+          file:
+          let
+            name = builtins.baseNameOf file;
+          in
+          {
+            name = "amnezia/amneziawg/${name}";
+            value.source = ./${name};
+          }
+        )
+        (
+          builtins.filter (f: builtins.match ".*\\.conf$" f != null) (
+            builtins.attrNames (builtins.readDir ./.)
+          )
+        )
+    );
+
+    systemPackages = with pkgs; [
+      amneziawg-tools
+      amneziawg-go
+    ];
+  };
 
   boot.extraModulePackages = with config.boot.kernelPackages; [ amneziawg ];
 

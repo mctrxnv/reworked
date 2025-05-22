@@ -9,6 +9,8 @@ with lib;
 mkIf (itIs == "desktop" || itIs == "laptop") {
   persist.user.files = [ ".local/share/fish/fish_history" ];
 
+  programs.fish.enable = true;
+
   hm = {
     home.packages = with pkgs; [ grc ];
 
