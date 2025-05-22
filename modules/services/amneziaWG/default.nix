@@ -12,7 +12,7 @@ let
   mk = n: "sudo ${getExe' pkgs.amneziawg-amneziawg-tools "awg-quick"} ${n} config";
 in
 
-{
+mkIf (itIs == "desktop" || itIs == "laptop") {
   environment.systemPackages = with pkgs; [
     amneziawg-tools
     amneziawg-go

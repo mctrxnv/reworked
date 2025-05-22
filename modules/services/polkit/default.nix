@@ -4,7 +4,9 @@
   ...
 }:
 
-{
+with lib;
+
+mkIf (itIs == "desktop" || itIs == "laptop") {
   security = {
     polkit.enable = true;
     soteria.enable = true;

@@ -7,7 +7,7 @@
 
 with lib;
 
-{
+mkIf (itIs == "desktop" || itIs == "laptop") {
   hm = {
     programs.fish.shellAbbrs = {
       s = "sudo";

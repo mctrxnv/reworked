@@ -18,7 +18,7 @@ let
   };
 in
 
-mkIf (itIs == "desktop" || itIs == "laptop") {
+mkIf true {
   hm.programs.mpv = {
     enable = true;
 

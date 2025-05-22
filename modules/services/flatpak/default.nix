@@ -5,7 +5,7 @@
 
 with lib;
 
-{
+mkIf false {
   services.flatpak = {
     enable = true;
 

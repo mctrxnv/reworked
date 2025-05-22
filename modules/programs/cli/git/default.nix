@@ -12,7 +12,7 @@ let
     ;
 in
 
-{
+mkIf (itIs == "desktop" || itIs == "laptop") {
   environment.systemPackages = [ onefetch ];
 
   programs.git.package = mkDefault gitMinimal;

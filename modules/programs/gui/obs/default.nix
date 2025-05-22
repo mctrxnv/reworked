@@ -1,15 +1,16 @@
 {
   pkgs,
+  lib,
   ...
 }:
 
-with pkgs.obs-studio-plugins;
+with lib;
 
-{
+mkIf (itIs == "desktop") {
   hm.programs.obs-studio = {
     enable = true;
 
-    plugins = [
+    plugins = with pkgs.obs-studio-plugins; [
       obs-pipewire-audio-capture
       obs-multi-rtmp
       obs-vkcapture

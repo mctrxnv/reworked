@@ -6,9 +6,9 @@
 
 with lib;
 
-{
+mkIf (itIs == "laptop") {
   services.fprintd = {
-    enable = mkIf (itIs == "laptop") true;
+    enable = true;
 
     package = pkgs.stable.fprintd-tod;
 

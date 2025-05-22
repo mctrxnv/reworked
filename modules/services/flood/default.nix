@@ -1,12 +1,13 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }:
 
 with lib;
 
-{
+mkIf config.services.qbittorrent.enable {
   persist.dirs = [ "/var/lib/flood" ];
 
   systemd.services.flood = {

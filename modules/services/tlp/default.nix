@@ -5,7 +5,7 @@
 
 with lib;
 
-{
+mkIf (itIs == "laptop") {
   services.tlp = {
     enable = true;
 

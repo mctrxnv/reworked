@@ -5,7 +5,9 @@
   ...
 }:
 
-{
+with lib;
+
+mkIf (itIs == "desktop" || itIs == "laptop") {
   hm = {
     programs.yazi =
       {
@@ -45,11 +47,14 @@
 
     home.packages = with pkgs; [
       ffmpegthumbnailer
-      wl-clipboard
-      poppler_min
       glow
-      ouch
       jq
+      ouch
+      poppler_min
+      unrar
+      unzip
+      wl-clipboard
+      zip
     ];
   };
 }

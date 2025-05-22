@@ -1,11 +1,14 @@
 {
   inputs,
   pkgs,
+  lib,
   config,
   ...
 }:
 
-{
+with lib;
+
+mkIf (itIs == "desktop") {
   hm.programs.spicetify = {
     enable = true;
 

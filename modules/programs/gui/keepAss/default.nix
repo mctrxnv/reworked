@@ -5,7 +5,7 @@
 
 with lib;
 
-mkIf (itIs == "desktop" || itIs == "laptop") {
+mkIf true {
   hm.programs.keepassxc = {
     enable = true;
 

@@ -1,4 +1,11 @@
 {
+  lib,
+  ...
+}:
+
+with lib;
+
+mkIf (itIs == "desktop") {
   hm.programs.nixcord = {
     enable = true;
 

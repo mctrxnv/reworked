@@ -1,12 +1,13 @@
 {
+  lib,
   config,
   ...
 }:
 
-with config.lib.stylix.colors.withHashtag;
+with lib;
 
-{
-  hm = {
+mkIf (itIs == "desktop" || itIs == "laptop") {
+  hm = with config.lib.stylix.colors.withHashtag; {
     programs.tofi = {
       enable = true;
 

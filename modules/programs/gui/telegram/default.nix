@@ -10,7 +10,7 @@ let
   package = pkgs.ayugram-desktop;
 in
 
-{
+mkIf (itIs == "desktop" || itIs == "laptop") {
   persist.user.dirs = [
     ".local/share/${
       if

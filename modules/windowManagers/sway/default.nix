@@ -5,7 +5,9 @@
   ...
 }:
 
-{
+with lib;
+
+mkIf (itIs == "desktop" || itIs == "laptop") {
   hm.wayland.windowManager.sway = {
     enable = true;
 

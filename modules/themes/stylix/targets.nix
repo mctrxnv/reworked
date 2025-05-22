@@ -15,7 +15,6 @@
     hyprpaper.enable = true;
   };
   hyprpaper.enable = true;
-  # niri.enable = true;
   sway.enable = true;
   river.enable = true;
 
@@ -31,7 +30,7 @@
   fzf.enable = true;
   bat.enable = true;
   mangohud.enable = true;
-  #
+
   # gui
   nixcord.enable = true;
   zathura.enable = true;

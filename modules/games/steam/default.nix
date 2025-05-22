@@ -17,7 +17,7 @@ let
   );
 in
 
-{
+mkIf (itIs == "desktop" || itIs == "laptop") {
   persist.user.dirs = [
     ".local/share/Steam"
     ".steam"
@@ -25,7 +25,7 @@ in
 
   hardware.xone.enable = true;
 
-  programs = {
+  programs = with pkgs; {
     steam = {
       enable = true;
       gamescopeSession.enable = true;
@@ -33,12 +33,12 @@ in
       remotePlay.openFirewall = true;
 
       extraCompatPackages = [
-        (pkgs.proton-ge-bin.override {
+        (proton-ge-bin.override {
           steamDisplayName = "Proton-GE-unstable";
         })
       ];
 
-      package = pkgs.steam.override {
+      package = steam.override {
         inherit
           extraArgs
           ;
@@ -70,7 +70,7 @@ in
     wantedBy = [ "graphical-session.target" ];
 
     serviceConfig = {
-      ExecStart = ''${getExe pkgs.steam} ${extraArgs} %U'';
+      ExecStart = ''${getExe config.programs.steam.package} ${extraArgs} %U'';
       Restart = "on-abort";
       RestartSec = "5s";
     };

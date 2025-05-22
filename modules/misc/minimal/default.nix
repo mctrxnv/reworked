@@ -3,8 +3,9 @@
   ...
 }:
 
+with lib;
 let
-  off = lib.mkDefault { enable = false; };
+  off = mkDefault { enable = false; };
 in
 
 {

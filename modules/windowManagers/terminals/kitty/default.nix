@@ -1,9 +1,12 @@
 {
+  lib,
   config,
   ...
 }:
 
-{
+with lib;
+
+mkIf (itIs == "desktop" || itIs == "laptop") {
   hm.programs.kitty = {
     enable = true;
 

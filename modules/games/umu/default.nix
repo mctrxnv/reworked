@@ -5,20 +5,20 @@
   ...
 }:
 
-with pkgs;
+with lib;
 
-{
+mkIf (itIs == "desktop" || itIs == "laptop") {
   persist.user.dirs = [ ".local/share/umu" ];
 
   environment.shellAliases.uwu = "umu-run";
 
   hm = {
-    home.packages = [
+    home.packages = with pkgs; [
       (umu-launcher.override {
         extraEnv = {
-          SDL_VIDEODRIVER = lib.mkForce "";
+          SDL_VIDEODRIVER = mkForce "";
 
-          WINEPREFIX = lib.paths.winePrefix;
+          WINEPREFIX = paths.winePrefix;
 
           PROTONPATH = toString proton-ge-bin.steamcompattool;
 

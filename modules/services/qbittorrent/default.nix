@@ -1,6 +1,14 @@
 {
-  imports = [ ./module.nix ];
+  lib,
+  ...
+}:
 
+with lib;
+
+{
+  imports = [ ./module.nix ];
+}
+// (mkIf (itIs == "desktop" || itIs == "laptop") {
   persist.dirs = [ "/var/lib/qBittorrent" ];
 
   services.qbittorrent = {
@@ -45,4 +53,4 @@
       };
     };
   };
-}
+})

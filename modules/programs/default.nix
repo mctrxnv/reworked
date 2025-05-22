@@ -8,16 +8,12 @@ with lib;
 
 {
   environment = {
-    systemPackages =
-      with pkgs;
-      [
-        killall
-        wget
-      ]
-      ++ (lib.optionals (itIs != "desktop") [
-        fff
-        vim
-      ]);
+    systemPackages = with pkgs; [
+      killall
+      wget
+      fff
+      helix
+    ];
 
     variables = {
       EDITOR = "vim";

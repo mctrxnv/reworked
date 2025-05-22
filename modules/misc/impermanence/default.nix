@@ -22,16 +22,16 @@ in
     };
   };
 
-  config = mkIf (lib.paths.persist != null) {
+  config = mkIf (paths.persist != null) {
     boot.initrd = import ./initrd.nix {
       inherit
         lib
         ;
     };
 
-    fileSystems.${lib.paths.persist}.neededForBoot = true;
+    fileSystems.${paths.persist}.neededForBoot = true;
 
-    environment.persistence.${lib.paths.persist + "/system"} = {
+    environment.persistence.${paths.persist + "/system"} = {
       hideMounts = true;
 
       directories = [
@@ -51,7 +51,7 @@ in
         "/etc/machine-id"
       ] ++ cfg.files;
 
-      users.${x.sys.userName} = {
+      users.${system.userName} = {
         directories = [ ] ++ cfg.user.dirs;
 
         files = [ ] ++ cfg.user.files;

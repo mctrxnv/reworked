@@ -1,7 +1,10 @@
 {
   lib,
+  config,
   ...
 }:
+
+with lib;
 
 {
   hm.programs.starship = {

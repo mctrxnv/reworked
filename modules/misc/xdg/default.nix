@@ -7,7 +7,7 @@
 
 with lib;
 
-{
+mkIf (itIs == "desktop" || itIs == "laptop") {
   persist.user.dirs = [
     "Desktop"
     "Documents"

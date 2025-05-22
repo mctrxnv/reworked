@@ -5,7 +5,9 @@
   ...
 }:
 
-{
+with lib;
+
+mkIf (itIs == "desktop" || itIs == "laptop") {
   hm.programs.helix = {
     enable = true;
 

@@ -4,7 +4,9 @@
   ...
 }:
 
-{
+with lib;
+
+mkIf (itIs == "desktop" || itIs == "laptop") {
   hm.programs.wlogout = {
     enable = true;
 

@@ -1,12 +1,13 @@
 {
   pkgs,
+  lib,
   ...
 }:
 
-with pkgs;
+with lib;
 
-{
-  hm = {
+mkIf (itIs != "desktop" || itIs != "laptop") {
+  hm = with pkgs; {
     home.packages = [ figlet ];
 
     xdg.configFile =

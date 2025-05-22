@@ -7,7 +7,7 @@
 
 with lib;
 
-{
+mkIf false {
   hm = {
     home.packages = [ pkgs.nwg-drawer ];
 

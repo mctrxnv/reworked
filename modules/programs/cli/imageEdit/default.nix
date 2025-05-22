@@ -1,15 +1,16 @@
 {
   pkgs,
+  lib,
   ...
 }:
 
-with pkgs;
+with lib;
 
-{
-  hm.home.packages = [
+mkIf (itIs != "desktop") {
+  hm.home.packages = with pkgs; [
     imagemagick
     jpegoptim
-    optipng
     lutgen
+    optipng
   ];
 }

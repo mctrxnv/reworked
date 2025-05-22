@@ -4,11 +4,13 @@
   ...
 }:
 
-{
-  hm = {
-    home.packages = with pkgs; [ legendary-gl ];
+with lib;
 
-    xdg.configFile."legendary/config.ini".text = lib.generators.toINI { } {
+mkIf (itIs == "desktop") {
+  hm = {
+    home.packages = [ pkgs.legendary-gl ];
+
+    xdg.configFile."legendary/config.ini".text = generators.toINI { } {
       "Legendary" = {
         disable_auto_aliasing = false;
         disable_https = false;

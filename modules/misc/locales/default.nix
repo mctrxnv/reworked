@@ -1,4 +1,11 @@
 {
+  lib,
+  ...
+}:
+
+with lib;
+
+{
   persist.dirs = [ "/var/lib/chrony" ];
 
   services = {

@@ -1,9 +1,12 @@
 {
   pkgs,
+  lib,
   ...
 }:
 
-{
+with lib;
+
+mkIf (itIs == "desktop" || itIs == "laptop") {
   hm = {
     programs = {
       ripgrep.enable = true;

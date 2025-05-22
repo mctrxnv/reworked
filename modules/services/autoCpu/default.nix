@@ -5,7 +5,7 @@
 
 with lib;
 
-{
+mkIf (itIs == "laptop") {
   services.auto-cpufreq = {
     enable = mkIf (itIs == "laptop") true;
 

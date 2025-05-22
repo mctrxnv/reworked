@@ -1,13 +1,10 @@
 {
   pkgs,
-  lib,
   ...
 }:
 
-with lib;
-
 {
-  environment.systemPackages = with pkgs; [ pulsemixer ];
+  environment.systemPackages = [ pkgs.pulsemixer ];
 
   security.rtkit.enable = true;
 

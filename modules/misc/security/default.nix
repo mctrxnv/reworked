@@ -16,19 +16,19 @@ with lib;
       execWheelOnly = true;
       wheelNeedsPassword = true;
 
-      extraRules = [
+      extraRules = with pkgs; [
         {
-          users = [ system.userName ];
+          users = [ lib.system.userName ];
 
           groups = [ "wheel" ];
 
           commands = [
             {
-              command = getExe pkgs.light;
+              command = getExe light;
               options = [ "NOPASSWD" ];
             }
             {
-              command = getExe' pkgs.uutils-coreutils-noprefix "tee";
+              command = getExe' uutils-coreutils-noprefix "tee";
               options = [ "NOPASSWD" ];
             }
           ];

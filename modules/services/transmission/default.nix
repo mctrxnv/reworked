@@ -6,8 +6,8 @@
 
 with lib;
 
-{
-  systemd.services.transmission.serviceConfig.UMask = lib.mkForce "0037";
+mkIf false {
+  systemd.services.transmission.serviceConfig.UMask = mkForce "0037";
 
   services.transmission = rec {
     enable = true;

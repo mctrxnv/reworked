@@ -6,7 +6,7 @@
 
 with lib;
 
-{
+mkIf false {
   hm.programs.zsh = with pkgs; {
     enable = false;
 

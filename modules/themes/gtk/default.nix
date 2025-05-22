@@ -5,10 +5,7 @@
 }:
 
 with lib;
-
 let
-  cfg = config.hm.stylix.targets.gtk;
-
   extra = {
     gtk-application-prefer-dark-theme = 1;
     gtk-xft-antialias = 1;

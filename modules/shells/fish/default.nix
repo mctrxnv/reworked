@@ -6,7 +6,7 @@
 
 with lib;
 
-{
+mkIf (itIs == "desktop" || itIs == "laptop") {
   persist.user.files = [ ".local/share/fish/fish_history" ];
 
   hm = {

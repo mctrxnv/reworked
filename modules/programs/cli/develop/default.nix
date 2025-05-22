@@ -1,10 +1,13 @@
 {
   pkgs,
+  lib,
   ...
 }:
 
-{
-  hm.home.packages = builtins.attrValues {
+with lib;
+
+mkIf (itIs == "desktop") {
+  hm.home.packages = attrValues {
     inherit (pkgs)
       cachix
       hut

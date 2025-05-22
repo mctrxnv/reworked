@@ -5,7 +5,9 @@
   ...
 }:
 
-{
+with lib;
+
+mkIf (itIs == "desktop" || itIs == "laptop") {
   hm.imports = [ ./whlist.nix ];
 
   persist.user.dirs = [ ".local/share/qutebrowser" ];

@@ -6,7 +6,7 @@
 
 with lib;
 
-mkIf (itIs != "desktop" || itIs != "laptop") {
+mkIf false {
   hm.programs.foot = {
     enable = true;
 

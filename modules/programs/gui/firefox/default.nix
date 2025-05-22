@@ -9,7 +9,7 @@ let
   settings = import ./settings.nix;
 in
 
-mkIf (itIs != "desktop" || itIs != "laptop") {
+mkIf false {
   hm.programs.firefox = {
     enable = true;
 

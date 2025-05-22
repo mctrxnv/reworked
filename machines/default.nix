@@ -19,25 +19,25 @@
     };
   };
 
-  # thinkpadT14 = {
-  #   sys = {
-  #     hostName = "embrace";
-  #     userName = "huggyer";
-  #     is = "laptop";
-  #     platform = "x86_64-linux";
-  #     ver = "24.05";
-  #   };
-  #   path = {
-  #     flake = "/persist/flake";
-  #     pass = "/persist/vault/passwords.kdbx";
-  #     steamUnified = "/persist/proton-prefix";
-  #     impermanence = "/persist";
-  #   };
-  #   styl = {
-  #     theme = "neoGenesis";
-  #     image = "townChristmas";
-  #   };
-  # };
+  thinkpadT14 = {
+    system = {
+      itIs = "laptop";
+      hostName = "embrace";
+      userName = "huggyer";
+      platform = "x86_64-linux";
+      version = "24.05";
+    };
+    paths = {
+      flakeDir = "/persist/flake";
+      passwords = "/persist/vault/passwords.kdbx";
+      winePrefix = "/persist/proton-prefix";
+      persist = "/persist";
+    };
+    style = {
+      theme = "neoGenesis";
+      image = "townChristmas";
+    };
+  };
 
   # isoNixtended = {
   #   sys = {

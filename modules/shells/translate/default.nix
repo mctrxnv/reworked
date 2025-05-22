@@ -1,4 +1,11 @@
 {
+  lib,
+  ...
+}:
+
+with lib;
+
+mkIf (itIs == "desktop" || itIs == "laptop") {
   hm.programs.translate-shell = {
     enable = true;
 

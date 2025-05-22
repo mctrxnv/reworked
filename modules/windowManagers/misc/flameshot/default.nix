@@ -1,12 +1,13 @@
 {
   pkgs,
+  lib,
   config,
   ...
 }:
 
-with config.lib.stylix.colors.withHashtag;
+with lib;
 
-{
+mkIf false {
   hm.services.flameshot = {
     enable = false;
 
@@ -15,7 +16,7 @@ with config.lib.stylix.colors.withHashtag;
       enableMonochromeIcon = true;
     };
 
-    settings = {
+    settings = with config.lib.stylix.colors.withHashtag; {
       General = {
         saveAsFileExtension = ".jpg";
         useJpgForClipboard = true;

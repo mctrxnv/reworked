@@ -4,19 +4,23 @@
   ...
 }:
 
+with lib;
+
 {
-  hardware = {
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
+  hardware =
+    {
+      graphics = {
+        enable = true;
+        enable32Bit = true;
+      };
+    }
+    // (optionalAttrs (itIs == "desktop" || itIs == "laptop") {
+      amdgpu.initrd.enable = true;
 
-    amdgpu.initrd.enable = true;
+      cpu.amd = {
+        ryzen-smu.enable = true;
 
-    cpu.amd = {
-      ryzen-smu.enable = true;
-
-      updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-    };
-  };
+        updateMicrocode = mkDefault config.hardware.enableRedistributableFirmware;
+      };
+    });
 }

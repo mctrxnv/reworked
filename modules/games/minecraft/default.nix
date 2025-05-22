@@ -4,17 +4,16 @@
   ...
 }:
 
-with pkgs;
 with lib;
 
-{
+mkIf (itIs == "desktop" || itIs == "laptop") {
   persist.user.dirs = [
     ".local/share/PrismLauncher"
     ".config/ferium"
     ".minecraft"
   ];
 
-  hm.home.packages = [
+  hm.home.packages = with pkgs; [
     (prismlauncher.override {
       gamemodeSupport = true;
       controllerSupport = true;
@@ -28,10 +27,6 @@ with lib;
           temurin-jre-bin-8
           ;
       };
-    })
-
-    (portablemc.override {
-      jre = temurin-jre-bin;
     })
   ];
 }

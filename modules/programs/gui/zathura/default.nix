@@ -1,4 +1,12 @@
 {
+  lib,
+  config,
+  ...
+}:
+
+with lib;
+
+{
   hm.programs.zathura = {
     enable = true;
 

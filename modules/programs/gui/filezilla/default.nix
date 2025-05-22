@@ -6,10 +6,8 @@
 
 with lib;
 
-mkIf (itIs == "desktop" || itIs == "laptop") {
+mkIf (itIs == "desktop") {
   hm.home.packages = with pkgs; [
-    unrar
-    unzip
-    zip
+    filezilla
   ];
 }
